@@ -5,7 +5,7 @@
     <h3>{{ $video->title }} ({{ $video->getReadableDuration() }})</h3>
     <p>{{ $video->description }}</p>
 
-    @if(auth()->user()->watchedVideos()->where('video_id', $video->id)->count())
+    @if($video->alreadyWatchedByCurrentUser())
         <button wire:click="markAsNotCompleted">Mark as not completed</button>
     @else
         <button wire:click="markAsCompleted">Mark as completed</button>
