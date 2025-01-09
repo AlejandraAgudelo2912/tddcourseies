@@ -63,7 +63,10 @@ it('marks video as completed', function () {
     // Act & Assert
     loginAsUser($user);
     Livewire::test(VideoPlayer::class , ['video' => $course->videos->first()])
-        ->call('markAsCompleted');
+        ->assertMethodWired('markAsCompleted')
+        ->call('markAsCompleted')
+        ->assertMethodWired('markAsNotCompleted')
+        ->assertMethodNotWired('markAsCompleted');
 
     //Assert
     $user->refresh();
@@ -84,7 +87,10 @@ it('marks video as not completed', function () {
     // Act & Assert
     loginAsUser($user);
     Livewire::test(VideoPlayer::class , ['video' => $course->videos->first()])
-        ->call('markAsNotCompleted');
+        ->assertMethodWired('markAsNotCompleted')
+        ->call('markAsNotCompleted')
+        ->assertMethodWired('markAsCompleted')
+        ->assertMethodNotWired('markAsNotCompleted');
 
     // Assert
     $user->refresh();
