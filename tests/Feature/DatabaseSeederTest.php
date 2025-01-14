@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\Course;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-
+use App\Models\User;
+use App\Models\Video;
 
 it('adds given courses', function () {
     //Arrange
@@ -26,4 +26,63 @@ it('adds given courses only once', function () {
 
     //Assert
     $this->assertDatabaseCount(Course::class, 3);
+});
+
+it('adds given videos', function () {
+    //Assert
+    $this->assertDatabaseCount(Video::class, 0);
+
+    //Act
+    $this->artisan('db:seed');
+    $laravelForBeginners = Course::where('title', 'Laravel For Beginners')->firstOrFail();
+    $advancedLaravel = Course::where('title', 'Advanced Laravel')->firstOrFail();
+    $tddTheLaravelWay = Course::where('title', 'TDD the Laravel Way')->firstOrFail();
+
+    //Assert
+    $this->assertDatabaseCount(Video::class, 8);
+    expect($laravelForBeginners->videos)->toHaveCount(3)
+    ->and($advancedLaravel->videos)->toHaveCount(3)
+    ->and($tddTheLaravelWay->videos)->toHaveCount(2);
+
+});
+
+it('adds given videos only once', function () {
+    //Assert
+    $this->assertDatabaseCount(Video::class,0);
+    //Act
+    $this->artisan('db:seed');
+    $this->artisan('db:seed');
+
+    //Assert
+    $this->assertDatabaseCount(Video::class, 8);
+});
+
+it('adds local test user', function () {
+    //Arrange
+    App::partialMock()->shouldReceive('environment')->andReturn('local');
+
+    //Assert
+    $this->assertDatabaseCount(User::class, 0);
+
+    //Act
+    $this->artisan('db:seed');
+
+    //Assert
+    $this->assertDatabaseCount(User::class,1);
+});
+
+it('does not test user for production', function () {
+    //Arrange
+    App::partialMock()->shouldReceive('environment')->andReturn('production');
+
+    //Assert
+    $this->assertDatabaseCount(User::class,0);
+
+    //Act
+    $this->artisan('db:seed');
+
+    //Assert
+    $this->assertDatabaseCount(User::class,0);
+
+
 });
