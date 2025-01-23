@@ -36,4 +36,11 @@ return [
         'public-key' => env('PADDLE_PUBLIC_KEY'),
         'notifications-endpoint-secret-key' => env('PADDLE_NOTIFICATIONS_ENDPOINT_SECRET_KEY'),
     ],
+
+    'twitter' => [
+        'consumer_key' => env('TWITTER_CONSUMER_KEY'),
+        'consumer_secret' => env('TWITTER_CONSUMER_SECRET'),
+        'access_token' => env('TWITTER_ACCESS_TOKEN'),
+        'access_token_secret' => env('TWITTER_ACCESS_TOKEN_SECRET'),
+    ],
 ];
