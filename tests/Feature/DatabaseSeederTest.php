@@ -41,14 +41,14 @@ it('adds given videos', function () {
     //Assert
     $this->assertDatabaseCount(Video::class, 8);
     expect($laravelForBeginners->videos)->toHaveCount(3)
-    ->and($advancedLaravel->videos)->toHaveCount(3)
-    ->and($tddTheLaravelWay->videos)->toHaveCount(2);
+        ->and($advancedLaravel->videos)->toHaveCount(3)
+        ->and($tddTheLaravelWay->videos)->toHaveCount(2);
 
 });
 
 it('adds given videos only once', function () {
     //Assert
-    $this->assertDatabaseCount(Video::class,0);
+    $this->assertDatabaseCount(Video::class, 0);
     //Act
     $this->artisan('db:seed');
     $this->artisan('db:seed');
@@ -68,7 +68,7 @@ it('adds local test user', function () {
     $this->artisan('db:seed');
 
     //Assert
-    $this->assertDatabaseCount(User::class,1);
+    $this->assertDatabaseCount(User::class, 1);
 });
 
 it('does not test user for production', function () {
@@ -76,13 +76,12 @@ it('does not test user for production', function () {
     App::partialMock()->shouldReceive('environment')->andReturn('production');
 
     //Assert
-    $this->assertDatabaseCount(User::class,0);
+    $this->assertDatabaseCount(User::class, 0);
 
     //Act
     $this->artisan('db:seed');
 
     //Assert
-    $this->assertDatabaseCount(User::class,0);
-
+    $this->assertDatabaseCount(User::class, 0);
 
 });

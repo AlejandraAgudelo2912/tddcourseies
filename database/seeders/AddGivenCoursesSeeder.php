@@ -14,12 +14,12 @@ class AddGivenCoursesSeeder extends Seeder
             return;
         }
         Course::create([
-            'paddle_product_id'=>'34779',
-            'slug'=>Str::of('Laravel For Beginners')->slug(),
-            'title'=>'Laravel For Beginners',
+            'paddle_product_id' => '34779',
+            'slug' => Str::of('Laravel For Beginners')->slug(),
+            'title' => 'Laravel For Beginners',
             'tagline' => 'Make your first steps as a Laravel developer',
             'description' => 'A video course to teach you Laravel from scratch',
-            'image_name' =>'laravel_for_beginners.png',
+            'image_name' => 'laravel_for_beginners.png',
             'learnings' => [
                 'How to start with Laravel',
                 'Where to start with Laravel',
@@ -29,12 +29,12 @@ class AddGivenCoursesSeeder extends Seeder
         ]);
 
         Course::create([
-            'paddle_product_id'=>'34780',
-            'slug'=>Str::of('Advanced Laravel')->slug(),
-            'title'=>'Advanced Laravel',
+            'paddle_product_id' => '34780',
+            'slug' => Str::of('Advanced Laravel')->slug(),
+            'title' => 'Advanced Laravel',
             'tagline' => 'Level up as a Laravel developer',
             'description' => 'A video course to teach you advanced techniques of Laravel',
-            'image_name' =>'advanced_laravel.png',
+            'image_name' => 'advanced_laravel.png',
             'learnings' => [
                 'How to use service container',
                 'Pipelines in Laravel',
@@ -44,12 +44,12 @@ class AddGivenCoursesSeeder extends Seeder
         ]);
 
         Course::create([
-            'paddle_product_id'=>'34781',
-            'slug'=>Str::of('TDD the Laravel Way')->slug(),
-            'title'=>'TDD the Laravel Way',
+            'paddle_product_id' => '34781',
+            'slug' => Str::of('TDD the Laravel Way')->slug(),
+            'title' => 'TDD the Laravel Way',
             'tagline' => 'Learn TDD with Laravel',
             'description' => 'A video course to teach you TDD with Laravel',
-            'image_name' =>'tdd_laravel.png',
+            'image_name' => 'tdd_laravel.png',
             'learnings' => [
                 'How to use PEST',
                 'Test pages in Laravel',
@@ -61,7 +61,7 @@ class AddGivenCoursesSeeder extends Seeder
 
     private function isDataAlreadyGiven(): bool
     {
-        return Course::where('title', 'Laravel For Beginners')->exists()&&
+        return Course::where('title', 'Laravel For Beginners')->exists() &&
             Course::where('title', 'Advanced Laravel')->exists()
             && Course::where('title', 'TDD the Laravel Way')->exists();
     }

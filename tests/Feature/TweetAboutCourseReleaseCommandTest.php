@@ -1,6 +1,5 @@
 <?php
 
-
 use App\Console\Commands\TwitterAboutCourseReleaseCommand;
 use App\Models\Course;
 

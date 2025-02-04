@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AddGivenCoursesSeeder::class,
             AddGivenVideosSeeder::class,
-            AddLocalTestUserSeeder::class
+            AddLocalTestUserSeeder::class,
         ]);
     }
 }

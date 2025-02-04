@@ -11,14 +11,14 @@ class AddLocalTestUserSeeder extends Seeder
 {
     public function run(): void
     {
-        if(App::environment()==='local'){
-            $user=User::create([
-                'name'=>'Test User',
+        if (App::environment() === 'local') {
+            $user = User::create([
+                'name' => 'Test User',
                 'email' => 'test@mail.es',
-                'password'=>bcrypt('12345678')
+                'password' => bcrypt('12345678'),
             ]);
 
-            $courses=Course::all();
+            $courses = Course::all();
             $user->purchasedCourses()->attach($courses);
         }
     }

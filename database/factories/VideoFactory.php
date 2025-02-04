@@ -5,7 +5,6 @@ namespace Database\Factories;
 use App\Models\Course;
 use App\Models\Video;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Carbon;
 
 class VideoFactory extends Factory
 {
@@ -20,6 +19,6 @@ class VideoFactory extends Factory
             'title' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
             'duration_in_min' => $this->faker->numberBetween(1, 99),
-            ];
+        ];
     }
 }

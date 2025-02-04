@@ -3,6 +3,7 @@
 use App\Models\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Tests\TestCase;
+
 use function Pest\Laravel\actingAs;
 
 /*
@@ -28,9 +29,9 @@ uses(TestCase::class, LazilyRefreshDatabase::class)->in('Feature');
 | to assert different things. Of course, you may extend the Expectation API at any time.
 |
 */
-function loginAsUser(User $user=null)
+function loginAsUser(?User $user = null)
 {
-    $user=$user??User::factory()->create();
+    $user = $user ?? User::factory()->create();
 
     actingAs($user);
 

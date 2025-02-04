@@ -1,7 +1,8 @@
 <?php
 
-
-use App\Models\{User, Video, Course};
+use App\Models\Course;
+use App\Models\User;
+use App\Models\Video;
 
 it('has course', function () {
     //Arrange

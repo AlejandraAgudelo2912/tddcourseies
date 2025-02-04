@@ -4,8 +4,8 @@ use App\Models\Course;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Support\Carbon;
-use function Pest\Laravel\get;
 
+use function Pest\Laravel\get;
 
 it('cannot be accessed by guest', function () {
     // Act & Assert
@@ -16,12 +16,12 @@ it('cannot be accessed by guest', function () {
 it('lists purchased courses', function () {
     // Arrange
     $user = User::factory()
-                ->has(Course::factory()->count(2)->state(
-                    new Sequence(
-                        ['title' => 'Course A'],
-                        ['title' => 'Course B'],
-                    )),'purchasedCourses')
-                ->create();
+        ->has(Course::factory()->count(2)->state(
+            new Sequence(
+                ['title' => 'Course A'],
+                ['title' => 'Course B'],
+            )), 'purchasedCourses')
+        ->create();
 
     // Act & Assert
     loginAsUser($user);

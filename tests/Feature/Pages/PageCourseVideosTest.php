@@ -3,7 +3,8 @@
 use App\Http\Livewire\VideoPlayer;
 use App\Models\Course;
 use App\Models\Video;
-use \Illuminate\Database\Eloquent\Factories\Sequence;
+use Illuminate\Database\Eloquent\Factories\Sequence;
+
 use function Pest\Laravel\get;
 
 it('cannot be accessed by guest', function () {
@@ -11,7 +12,7 @@ it('cannot be accessed by guest', function () {
     $course = Course::factory()->create();
     //Act & Assert
     get(route('pages.course-videos', $course))
-    ->assertRedirect('login');
+        ->assertRedirect('login');
 });
 
 it('includes a video player', function () {
@@ -33,7 +34,7 @@ it('shows first course video by default', function () {
     loginAsUser();
     get(route('pages.course-videos', $course))
         ->assertOk()
-        ->assertSee("<h3>{$course->videos()->first()->title}",false);
+        ->assertSee("<h3>{$course->videos()->first()->title}", false);
 });
 
 it('shows provided course video', function () {
@@ -42,15 +43,14 @@ it('shows provided course video', function () {
         ->has(
             Video::factory()
                 ->state(new Sequence(
-                    ['title'=>'First Video',],
-                    ['title'=>'Second Video',]))->count(2))->create();
+                    ['title' => 'First Video'],
+                    ['title' => 'Second Video']))->count(2))->create();
     //Act & Assert
     loginAsUser();
     get(route('pages.course-videos', [
         'course' => $course,
-        'video' => $course->videos->last()
+        'video' => $course->videos->last(),
     ]))->assertOk()
-    ->assertSeeText('Second Video');
+        ->assertSeeText('Second Video');
 
 });
-

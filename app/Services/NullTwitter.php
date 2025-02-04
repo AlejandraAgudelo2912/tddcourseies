@@ -8,5 +8,4 @@ class NullTwitter implements TwitterClientInterface
     {
         return [];
     }
-
 }

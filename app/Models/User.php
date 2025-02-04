@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -67,7 +66,7 @@ class User extends Authenticatable
             ->orderByDesc('pivot_created_at');
     }
 
-    public function watchedVideos() : BelongsToMany
+    public function watchedVideos(): BelongsToMany
     {
         return $this->belongsToMany(Video::class, 'watched_videos')
             ->withTimestamps();

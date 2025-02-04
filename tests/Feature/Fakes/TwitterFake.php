@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Fakes;
 
-
 use Illuminate\Testing\Assert;
 
 class TwitterFake
@@ -14,7 +13,7 @@ class TwitterFake
         $this->tweets[] = $status;
 
         return [
-            'status'=> $status
+            'status' => $status,
         ];
     }
 

@@ -24,7 +24,7 @@ class AddGivenVideosSeeder extends Seeder
                 'slug' => 'intro',
                 'vimeo_id' => '330287829',
                 'title' => 'Intro',
-                'description'=>'Welcome to this course let me tell you that you are going to learn y the next videos',
+                'description' => 'Welcome to this course let me tell you that you are going to learn y the next videos',
                 'duration_in_min' => 1,
             ],
             [
@@ -32,7 +32,7 @@ class AddGivenVideosSeeder extends Seeder
                 'slug' => 'routes',
                 'vimeo_id' => '329875646',
                 'title' => 'Routes',
-                'description'=>'Routes are fundamental to every application. Laravel provides a simple syntax to define them.',
+                'description' => 'Routes are fundamental to every application. Laravel provides a simple syntax to define them.',
                 'duration_in_min' => 4,
             ],
             [
@@ -86,6 +86,7 @@ class AddGivenVideosSeeder extends Seeder
 
         ]);
     }
+
     private function isDataAlreadyGiven(): bool
     {
 
@@ -93,7 +94,7 @@ class AddGivenVideosSeeder extends Seeder
         $advancedLaravelCourse = Course::where('title', 'Advanced Laravel')->first();
         $tddTheLaravelWayCourse = Course::where('title', 'TDD the Laravel Way')->first();
 
-        return $laravelForBeginnersCourse->videos()->count() === 3&&
+        return $laravelForBeginnersCourse->videos()->count() === 3 &&
             $advancedLaravelCourse->videos()->count() === 3
             && $tddTheLaravelWayCourse->videos()->count() === 2;
     }

@@ -14,9 +14,9 @@ class TwitterAboutCourseReleaseCommand extends Command
 
     public function handle(): void
     {
-        $course=Course::findOrFail($this->argument('courseId'));
+        $course = Course::findOrFail($this->argument('courseId'));
 
-dd(        Twitter::tweet("I just release {$course->title}! Check it out on: ".route('pages.course-details', $course))
-    );
+        dd(Twitter::tweet("I just release {$course->title}! Check it out on: ".route('pages.course-details', $course))
+        );
     }
 }

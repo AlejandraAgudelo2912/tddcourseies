@@ -3,7 +3,6 @@
 use App\Models\Course;
 use App\Models\Video;
 
-
 it('only returns released courses for released scope', function () {
     // Arrange
     Course::factory()->released()->create();

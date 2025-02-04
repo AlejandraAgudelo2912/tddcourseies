@@ -2,8 +2,8 @@
 
 use App\Models\Course;
 use App\Models\Video;
-use function Pest\Laravel\get;
 
+use function Pest\Laravel\get;
 
 it('does not find unreleased course', function () {
     // Arrange
@@ -33,9 +33,9 @@ it('shows course details', function () {
 it('shows course video count', function () {
     // Arrange
     $course = Course::factory()
-                    ->released()
-                    ->has(Video::factory()->count(3))
-                    ->create();
+        ->released()
+        ->has(Video::factory()->count(3))
+        ->create();
 
     // Act & Assert
     get(route('pages.course-details', $course))
@@ -47,7 +47,7 @@ it('includes paddle checkout button', function () {
     // Arrange
     config()->set('services.paddle.vendor-id', 'vendor-id');
     $course = Course::factory()->released()->create([
-        'paddle_product_id'=>'pri_01jhqsmchvxh9rhh5fx9e3h5ck',
+        'paddle_product_id' => 'pri_01jhqsmchvxh9rhh5fx9e3h5ck',
     ]);
 
     // Act & Assert
