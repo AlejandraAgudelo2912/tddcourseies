@@ -3,8 +3,12 @@
 namespace App\Providers;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
-use App\TwitterClient;
+use App\Services\NullTwitter;
+use App\Services\TwitterClient;
+use App\Services\TwitterClientInterface;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
+use Tests\Feature\Fakes\TwitterFake;
 
 class TwitterServiceProvider extends ServiceProvider
 {
@@ -12,15 +16,20 @@ class TwitterServiceProvider extends ServiceProvider
     {
         $this->app->bind(TwitterOAuth::class, function () {
             return new TwitterOAuth(
-                (string)config('twitter.consumer_key'),
-                (string)config('twitter.consumer_secret'),
-                (string)config('twitter.access_token'),
-                (string)config('twitter.access_token_secret')
+                (string)config('services.twitter.consumer_key'),
+                (string)config('services.twitter.consumer_secret'),
+                (string)config('services.twitter.access_token'),
+                (string)config('services.twitter.access_token_secret')
             );
         });
 
-        $this->app->bind('twitter', function () {
-            return app(TwitterClient::class);
+        $this->app->bind(TwitterClientInterface::class, function (Application $app) {
+            if ($app->environment()=== 'production') {
+                return app(TwitterClient::class);
+            }
+
+            return new NullTwitter();
+
         });
     }
 
